@@ -8,6 +8,9 @@ arguments:
   order_by:
     type: column_value_dict
     description: dict where the keys are column names and the values are the order_method (ASC or DESC)
+  column_order:
+    type: column_list
+    description: order of the columns for the order by
 example_code: |
   ds = rasgo.get.dataset(id)
 
