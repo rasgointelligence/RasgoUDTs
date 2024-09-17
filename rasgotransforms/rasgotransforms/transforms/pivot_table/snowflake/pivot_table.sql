@@ -17,6 +17,9 @@ limit 500
         {{ raise_exception('Unable to successfully retrieve distinct values from your data warehouse.') }}
     {%- endif -%}
     {%- set distinct_vals = results[results.columns[0]].to_list() -%}
+    {%- if distinct_vals is none -%}
+        {{ raise_exception('0 distinct values met these conditions.') }}
+    {%- endif -%}
 {%- endif -%}
 
 {%- if rows is defined -%}
