@@ -26,6 +26,11 @@ jobs:
         pip install --upgrade setuptools build twine
         pip install -r rasgotransforms/requirements.txt
 
+    - name: Verify version
+      run: |
+        cd rasgotransforms/rasgotransforms
+        python -c "from version import __version__; assert __version__ == \"${GITHUB_REF#refs/tags/}\", \"Versions don\'t match\""
+        cd ../..
 
     - name: Build and publish
       env:
